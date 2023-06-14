@@ -1,0 +1,19 @@
+{% extends 'TecheraAPP/base.html' %}
+
+{% load static %}
+
+{% block title %} Definir Perfil {% endblock title %}
+{% block titulo %} Definir Perfil {% endblock titulo %}
+
+{% block main %}
+    <!-- Main Content-->
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        <input type="submit" value="Enviar">
+
+    </form>
+
+{% endblock main %}
