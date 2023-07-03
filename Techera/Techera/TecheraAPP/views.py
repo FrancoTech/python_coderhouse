@@ -107,8 +107,8 @@ def blogPostFormulario(request, id = None):
                 blogPost.titulo=informacion["titulo"]
             if informacion.get('subTitulo'):
                 blogPost.subTitulo=informacion["subTitulo"]
-            if informacion.get('mensaje'):
-                blogPost.contenido=informacion["mensaje"]
+            if informacion.get('contenido'):
+                blogPost.contenido=informacion["contenido"]
             blogPost.imagen = informacion.get('imagen') or blogPost.imagen
             if blogPost.fecha_creado == None:
                 blogPost.fecha_creado= date.today()
@@ -188,7 +188,7 @@ def mensajesView(request):
                     if(info_mensaje.get('titulo')):
                         mensaje.titulo = info_mensaje.get('titulo')
                     if(info_mensaje.get('mensaje')):
-                        mensaje.titulo = info_mensaje.get('mensaje')
+                        mensaje.mensaje = info_mensaje.get('mensaje')
                     mensaje.save()
                 # Procesa los datos del formulario dos
                 # ...
