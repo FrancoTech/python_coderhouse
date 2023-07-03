@@ -9,4 +9,4 @@ pip
 
 - El video muestra como crear usuarios, blogs, mensajes. 
 - Para crear info para el About page, solo se puede hacerlo desde el admin, ya que es un objeto About, con una imagen y una descripcion. 
-
+- En la carpeta Imagenes Prueba, quedan imagenes por si quieren usar al testear. 
