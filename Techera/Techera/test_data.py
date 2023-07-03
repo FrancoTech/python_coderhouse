@@ -6,7 +6,7 @@ from faker import Faker
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Techera.settings')
 django.setup()
 
-from TecheraAPP.models import Usuario, Perfil, BlogPost
+# from TecheraAPP.models import Usuario, Perfil, BlogPost
 from datetime import date
 
 

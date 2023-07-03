@@ -1,0 +1,18 @@
+{% extends 'TecheraAPP/base.html' %}
+
+{% load static %}
+
+{% block title %} Volver a Inicio {% endblock title %}
+{% block titulo %} <a href="{% url 'Inicio' %}"> Volver a Inicio </a> {% endblock titulo %}
+{% block image %} {% static 'TecheraAPP/assets/img/volver-inicio.jpg'%} {% endblock image %}
+
+{% block main %}
+    <!-- Main Content-->
+    <div class="row justify-content-center">
+        <div class="card m-2" style="width: 20rem;" >
+            <div class="card-body">
+                <h5 class="card-title"> Te deslogueaste con exito!</h5>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

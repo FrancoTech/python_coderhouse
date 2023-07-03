@@ -1,0 +1,21 @@
+{% extends 'TecheraAPP/base.html' %}
+
+{% load static %}
+{% block image %} {% static 'TecheraAPP/assets/img/home-bg.jpg'%} {% endblock image %}
+
+
+{% block title %} Iniciar Sesion {% endblock title %}
+{% block titulo %} Iniciar Sesion {% endblock titulo %}
+
+{% block main %}
+    <!-- Main Content-->
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        <input type="submit" value="Iniciar sesión">
+
+    </form>
+
+{% endblock main %}

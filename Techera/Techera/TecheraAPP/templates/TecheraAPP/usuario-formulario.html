@@ -1,13 +1,14 @@
 {% extends 'TecheraAPP/base.html' %}
 
 {% load static %}
+{% block image %} {% static 'TecheraAPP/assets/img/home-bg.jpg'%} {% endblock image %}
 
 {% block title %} Crear Usuario {% endblock title %}
 {% block titulo %} Crear Usuario {% endblock titulo %}
 
 {% block main %}
     <!-- Main Content-->
-    <form action="" method="POST">
+    <form action="" method="POST" >
         {% csrf_token %}
         <table>
             {{ formulario.as_table }}

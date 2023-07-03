@@ -1,0 +1,29 @@
+{% extends 'TecheraAPP/base.html' %}
+
+{% load static %}
+
+{% block title %}BlogPost{% endblock title %}
+{% block titulo %} {{ blog_post.titulo }} {% endblock titulo %}
+{% block subtitle %}{{ blog_post.subTitulo }}{% endblock subtitle %}
+{% block image %} {{ blog_post.imagen.url }} {% endblock image %}
+{% block userInfo %}
+    Posted by
+    <a href="#!">{{ blog_post.usuario }}</a>
+    {{ blog_post.fecha_creado }}
+{% endblock userInfo %}
+
+
+
+{% block main %}
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p> {{ blog_post.contenido | safe }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+{% endblock main %}

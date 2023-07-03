@@ -3,7 +3,10 @@
 {% load static %}
 
 {% block title %} Inicio {% endblock title %}
-{% block titulo %} Inicio {% endblock titulo %}
+{% block subtitle %} Comienza a crear posts. {% endblock subtitle %}
+{% block image %} {% static 'TecheraAPP/assets/img/home-bg.jpg'%} {% endblock image %}
+
+
 
 {% block main %}
     <div class="container px-4 px-lg-5">
@@ -18,23 +21,38 @@
                     <input type="submit" value="Buscar">
 
                 </form>
-
-                {% for blog_post in blog_posts %}
+                {% if blog_posts %}
+                    {% for blog_post in blog_posts %}
+                        <hr class="my-4" />
+                        <!-- Post preview-->
+                        <div class="post-preview">
+                            <a href="{% url 'Ver Blog' id=blog_post.id %}">
+                                <h2 class="post-title">{{ blog_post.titulo }} </h2>
+                                <h3 class="post-subtitle">{{ blog_post.subTitulo }} </h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="#!"> {{ blog_post.usuario }} </a>
+                                {{ blog_post.fecha_creado }} 
+                            </p>
+                            <p class="post-meta">
+                                {% comment %} Actions {% endcomment %}
+                                {% if request.user.is_authenticated and blog_post.usuario == request.user %}
+                                    <a href="{% url 'Editar Blog' id=blog_post.id %}"> Editar </a>
+                                    <a href="{% url 'Eliminar Blog' id=blog_post.id %}"> Eliminar </a>
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}   
+                {% else %}
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
                         <a href="#!">
-                            <h2 class="post-title">{{ blog_post.titulo }} </h2>
-                            <h3 class="post-subtitle">{{ blog_post.descripcion }} </h3>
+                            <h2 class="post-title">No hay posts aun</h2>
                         </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!"> {{ blog_post.usuario }} </a>
-                            {{ blog_post.fecha_creado }} 
-                        </p>
-                    </div>
-
-                {% endfor %}    
+                    </div>    
+                {% endif %}
             </div>
         </div>
     </div>

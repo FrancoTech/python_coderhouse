@@ -1,0 +1,54 @@
+{% extends 'TecheraAPP/base.html' %}
+
+{% load static %}
+
+{% block title %} Chat {% endblock title %}
+{% block titulo %} Comunicarse entre Usuario {% endblock titulo %}
+{% block image %} {% static 'TecheraAPP/assets/img/contact-bg.jpg'%} {% endblock image %}
+
+{% block main %}
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="my-5">
+                    <h2 class="post-title"> Elige usuario para charlar </h2>
+                    <form action="" method="POST" class="form-floating">
+                        {% csrf_token %}
+                        <table>
+                            {{ elegir_usuario.as_table }}
+                        </table>
+                        <input type="submit" class="btn btn-primary text-uppercase" name="boton_elegir_usuario" value="Elegir">
+                    </form>
+                </div>
+                <div class="my-5">
+
+                    <hr class="my-4" />
+                    {% if mensajes %}
+                        <h2 class="post-title"> Mensajes: </h2>
+                        {% for mensaje in mensajes %}
+                            <article class="mb-4">
+                                <div class="large text-muted fst-italic fw-bold">{{ mensaje.titulo }} </div>
+                                <div class="medium text-muted fst-italic">{{ mensaje.mensaje |safe }} </div>
+                                <div class="medium text-muted fst-italic">FROM: {{ mensaje.remitente }} </div>
+                                <div class="medium text-muted fst-italic">TO: {{ mensaje.destinatario }} </div>
+                            </article>
+                        {% endfor %}
+                        <hr class="my-4" />
+                    {% endif %}
+                    {% if destinatario %}
+                        <h2 class="post-title"> Escribe un nuevo mensaje: </h2>
+                        <form action="" method="POST" class="form-floating">
+                            {% csrf_token %}
+                            <table>
+                                {{ enviar_mensaje.as_table }}
+                            </table>
+                            <input type="hidden" name="destinatario_id" value="{{ destinatario.id}}">  <!-- Campo oculto con el ID del objeto -->
+                            <input type="submit" class="btn btn-primary text-uppercase" name="boton_enviar_mensaje" value="Enviar">
+                        </form>
+                    {% endif %}                
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

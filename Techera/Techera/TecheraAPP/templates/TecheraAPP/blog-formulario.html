@@ -2,12 +2,16 @@
 
 {% load static %}
 
-{% block title %} Crear Blog {% endblock title %}
-{% block titulo %} Crear Blog {% endblock titulo %}
+{% block title %} Blog {% endblock title %}
+{% block titulo %} Blog {% endblock titulo %}
+{% block image %} {% static 'TecheraAPP/assets/img/about-bg.jpg' %} {% endblock image %}
+
+
+
 
 {% block main %}
     <!-- Main Content-->
-    <form action="" method="POST">
+    <form action="" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
             {{ formulario.as_table }}

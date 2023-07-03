@@ -4,10 +4,16 @@
 
 {% block title %} Definir Perfil {% endblock title %}
 {% block titulo %} Definir Perfil {% endblock titulo %}
+{% block image %} {% static 'TecheraAPP/assets/img/post-bg.jpg'%} {% endblock image %}
 
 {% block main %}
     <!-- Main Content-->
-    <form action="" method="POST">
+    {% if perfil.avatar.url != ''%}
+            <img class="img-responsive img-rounded"style="max-height: 200px; max-width: 200px;" src="{{ perfil.avatar.url }}" alt="Profile Image" />
+    {% else %}
+            <img class="img-rounded" src="{% static 'TecheraAPP/assets/img/blank-profile.jpeg' %}" style="max-height: 200px; max-width: 200px;" alt="Profile Image" />
+    {% endif %}    
+    <form action="" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
             {{ formulario.as_table }}
